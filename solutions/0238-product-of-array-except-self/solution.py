@@ -1,23 +1,18 @@
 class Solution:
     def productExceptSelf(self, nums: list[int]) -> list[int]:
-        
-        seen = {}
-        result = []
+        result = [1] * len(nums)
 
-        for i, n in enumerate(nums):
+        product = 1
 
-            if n in seen:
-                result.append(seen[n])
-                continue
+        for i in range(len(nums)):
+            result[i] = product
+            product = product * nums[i]
 
-            prod = 1
+        product = 1
 
-            for j, m in enumerate(nums):
-                if i == j:
-                    continue
-                else:
-                    prod *= m
+        # with reversed() the list is read from right to left
+        for i in reversed(range(len(nums))):
+            result[i] = result[i] * product
+            product = product * nums[i]
 
-            seen[n] = prod
-            result.append(prod)
         return result
