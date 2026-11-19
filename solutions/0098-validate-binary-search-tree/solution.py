@@ -7,18 +7,19 @@
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
 
-        def validate(node, min_val, max_val):
+        def validate(node, min_value, max_value):
 
             if node is None:
                 return True
-
             
-            if not (min_val < node.val < max_val):
+            if not (min_value < node.val < max_value):
                 return False
-
-            l_tree = validate(node.left, min_val, node.val)
-            r_tree = validate(node.right, node.val, max_val)
+            
+            l_tree = validate(node.left, min_value, node.val)
+            r_tree = validate(node.right, node.val, max_value)
 
             return l_tree and r_tree
 
+
+        
         return validate(root, float('-inf'), float('inf'))
