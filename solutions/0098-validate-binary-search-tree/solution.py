@@ -11,15 +11,14 @@ class Solution:
 
             if node is None:
                 return True
+
             
             if not (min_val < node.val < max_val):
                 return False
-            
+
             l_tree = validate(node.left, min_val, node.val)
             r_tree = validate(node.right, node.val, max_val)
 
             return l_tree and r_tree
 
-
-        
         return validate(root, float('-inf'), float('inf'))
