@@ -19,5 +19,7 @@ class Solution:
             r_tree = validate(node.right, node.val, max_val)
 
             return l_tree and r_tree
+
+
         
         return validate(root, float('-inf'), float('inf'))
